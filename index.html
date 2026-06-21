@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1117">
+<meta name="robots" content="noindex">
+<title>Protocolo do Centro · 15 min de dentro pra fora</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','264800457918824');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=264800457918824&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+  :root{
+    --bg:#0d1117;--surface:#161b22;--surface2:#1c2230;--border:#30363d;
+    --text:#e6edf3;--muted:#8b949e;--accent:#8b5cf6;--accent2:#5eead4;
+    --lemon:#f4d03f;--success:#4ade80;--danger:#f43f5e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);
+    line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:60px}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+  .pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+    color:var(--accent2);background:rgba(94,234,212,.1);border:1px solid rgba(94,234,212,.25);border-radius:99px;padding:6px 14px}
+
+  header{padding:56px 0 30px;border-bottom:1px solid var(--border);
+    background:radial-gradient(800px 400px at 50% -25%,rgba(139,92,246,.16),transparent 62%)}
+  h1{font-size:clamp(27px,6.2vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.12;margin:18px 0 14px}
+  h1 b{color:var(--accent)}
+  .lead{color:var(--muted);font-size:17px;max-width:560px}
+
+  section{padding:34px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:clamp(21px,5vw,27px);font-weight:800;letter-spacing:-.5px;margin-bottom:14px}
+  h2 .em{color:var(--accent)}
+  p{margin-bottom:14px}.muted{color:var(--muted)}
+
+  /* SELF TEST */
+  .selftest{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px}
+  .selftest ol{padding-left:20px;margin:10px 0 16px}.selftest li{margin-bottom:7px;font-size:14.5px;color:var(--muted)}
+  .stbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stbtn{border:1px solid var(--border);background:var(--surface2);border-radius:12px;padding:13px;
+    font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--text);transition:.15s}
+  .stbtn:hover{border-color:var(--accent)}
+  .stresult{display:none;margin-top:14px;font-size:14px;border-radius:11px;padding:13px 15px}
+  .stresult.on{display:block;animation:fade .3s ease}
+  .stresult.yes{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3)}
+  .stresult.no{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25)}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  /* PLAYER */
+  .player{background:linear-gradient(180deg,var(--surface),rgba(22,27,34,.4));
+    border:1px solid var(--border);border-radius:20px;padding:24px;text-align:center;margin-top:8px}
+  .pace{width:180px;height:180px;margin:6px auto 14px;border-radius:50%;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle,rgba(139,92,246,.25),rgba(139,92,246,.04));
+    border:2px solid rgba(139,92,246,.4);transition:transform 4s ease-in-out}
+  .pace.in{transform:scale(1.18)}.pace.out{transform:scale(.78)}
+  .pace .word{font-size:19px;font-weight:800;letter-spacing:.5px}
+  .stepname{font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .steptitle{font-size:21px;font-weight:800;margin:4px 0 8px}
+  .stepdesc{font-size:14.5px;color:var(--muted);min-height:48px}
+  .clock{font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-1px;margin:10px 0}
+  .pbar{height:6px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:6px 0 16px}
+  .pbar i{display:block;height:100%;width:0;background:var(--accent);transition:width .9s linear}
+  .pctrl{display:flex;gap:10px;justify-content:center}
+  .pbtn{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:11px;
+    padding:12px 18px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;transition:.15s}
+  .pbtn:hover{border-color:var(--accent)}
+  .pbtn.main{background:linear-gradient(100deg,var(--accent),#a855f7);border-color:transparent;color:#fff;flex:1;max-width:220px}
+  .steps-list{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+  .sdot{font-size:11px;font-weight:700;color:var(--muted);background:var(--surface2);border:1px solid var(--border);
+    border-radius:99px;padding:5px 10px}
+  .sdot.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+  .sdot.done{color:var(--success);border-color:rgba(74,222,128,.4)}
+
+  .warn{background:rgba(244,63,94,.07);border:1px solid rgba(244,63,94,.22);border-radius:12px;padding:15px;margin-top:8px}
+  .warn b{color:#fca5b5}
+  .bullets{list-style:none;margin:10px 0}
+  .bullets li{position:relative;padding-left:26px;margin-bottom:9px;color:var(--muted);font-size:14.5px}
+  .bullets li::before{content:"✕";position:absolute;left:0;color:var(--danger);font-weight:800}
+
+  .reveal{border-top:2px solid var(--accent)}
+  .reveal h2 small{display:block;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+  .reveal a{color:var(--accent);font-weight:600;text-decoration:none}
+
+  .offer{background:linear-gradient(155deg,rgba(139,92,246,.2),rgba(94,234,212,.05));
+    border:1px solid rgba(139,92,246,.4);border-radius:20px;padding:26px 22px;text-align:center;margin-top:10px}
+  .offer .eye{color:var(--lemon);font-weight:700;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase}
+  .offer h2{margin:10px 0 14px}
+  .offer .price{font-size:46px;font-weight:900;letter-spacing:-2px;margin:6px 0}
+  .offer .price small{font-size:18px;color:var(--muted);font-weight:600}
+  .offer .feats{list-style:none;text-align:left;max-width:360px;margin:16px auto}
+  .offer .feats li{padding-left:30px;position:relative;margin-bottom:9px;font-size:14.5px}
+  .offer .feats li::before{content:"✓";position:absolute;left:0;color:var(--success);font-weight:900}
+  .cta{display:inline-block;background:linear-gradient(100deg,var(--accent),#a855f7);color:#fff;text-decoration:none;
+    font-weight:800;font-size:17px;padding:16px 34px;border-radius:99px;margin-top:8px;box-shadow:0 8px 28px rgba(139,92,246,.4);transition:.15s}
+  .cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .offer .sub{color:var(--muted);font-size:12.5px;margin-top:12px}
+  .ps{border-left:3px solid var(--accent);background:var(--surface);border-radius:0 12px 12px 0;padding:16px 18px;margin-top:26px;font-size:14.5px;color:var(--muted)}
+  .ps a{color:var(--accent);font-weight:600;text-decoration:none}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;padding:30px 20px 0}
+  .disc{font-size:12px;color:var(--muted);margin-top:14px;font-style:italic}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="pill">Sequência guiada · 15 minutos</span>
+    <h1>O <b>Protocolo do Centro</b>: fechar a barriga de dentro pra fora, antes de qualquer abdominal</h1>
+    <p class="lead">Depois do parto, abdominal e prancha cedo demais podem abrir ainda mais a barriga. O caminho começa na respiração e no que está mais fundo.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Por que a barriga <span class="em">ainda não fechou</span></h2>
+    <p>Na gravidez, a parede da barriga se afasta no meio. Chama diástase. Quando você corre pra abdominal e prancha tentando secar, a força mal feita empurra a barriga pra fora e pode abrir ainda mais.</p>
+    <p class="muted">O que reconecta o centro vem antes: respiração que ativa o assoalho pélvico e o músculo mais fundo do abdômen, o transversal. De dentro pra fora. Depois disso, o resto entra sem estufar.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Antes de começar: <span class="em">teste rápido</span></h2>
+    <div class="selftest">
+      <p style="margin:0 0 4px;font-weight:600">Teste caseiro de diástase</p>
+      <ol>
+        <li>Deita de barriga pra cima, joelhos dobrados.</li>
+        <li>Levanta só a cabeça do chão e olha pro umbigo.</li>
+        <li>Repara no meio da barriga.</li>
+      </ol>
+      <div class="stbtns">
+        <button class="stbtn" data-r="yes">Forma uma crista ou um vão</button>
+        <button class="stbtn" data-r="no">Fica plano, sem crista</button>
+      </div>
+      <div class="stresult yes" id="stYes">Provável diástase, e está tudo bem, é comum. Mais um motivo pra começar pelo centro e <b>evitar abdominal e prancha por enquanto</b>. A sequência abaixo é exatamente o primeiro passo.</div>
+      <div class="stresult no" id="stNo">Sinal melhor. Ainda assim, reconectar o centro primeiro deixa todo o resto mais seguro e eficiente. Faz a sequência abaixo.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>A sequência <span class="em">guiada</span></h2>
+    <p class="muted">Toca em começar e segue o ritmo. A bolinha cresce quando você inspira e diminui quando expira.</p>
+    <div class="player">
+      <div class="pace out" id="pace"><span class="word" id="paceWord">Pronta?</span></div>
+      <div class="stepname" id="stepName">5 etapas · 15 minutos</div>
+      <div class="steptitle" id="stepTitle">Protocolo do Centro</div>
+      <div class="stepdesc" id="stepDesc">Deita confortável, joelhos dobrados, uma mão na barriga e outra no peito.</div>
+      <div class="clock" id="clock">15:00</div>
+      <div class="pbar"><i id="pbar"></i></div>
+      <div class="pctrl">
+        <button class="pbtn" id="prev">Anterior</button>
+        <button class="pbtn main" id="play">Começar</button>
+        <button class="pbtn" id="next">Pular</button>
+      </div>
+      <div class="steps-list" id="dots"></div>
+    </div>
+    <div class="warn"><b>Enquanto reconecta o centro, evita:</b>
+      <ul class="bullets">
+        <li>Abdominal tradicional e prancha</li>
+        <li>Pegar peso prendendo a respiração</li>
+        <li>Qualquer exercício que faça a barriga estufar no meio</li>
+      </ul>
+    </div>
+    <p class="disc">Conteúdo educativo. No pós-parto, confirma com teu médico ou fisioterapeuta a liberação pra exercício, principalmente se teve cesárea ou diástase grande.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <h2><small>Quem escreveu isso?</small>Eu sou o Lucas, personal trainer</h2>
+    <p>Acompanho mães de primeira viagem que se sentem perdidas com o corpo depois do parto e só ouvem "faz abdominal". Reconstruir de dentro pra fora muda tudo, e é mais rápido do que parece.</p>
+    <p class="muted">Mostro o passo a passo no meu Instagram, <a href="https://instagram.com/personaltrainerlucaslima" target="_blank" rel="noopener">@personaltrainerlucaslima</a>.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="offer">
+      <span class="eye">Próximo passo</span>
+      <h2>Treino Express</h2>
+      <p class="muted">A continuação segura do centro: um treino curto pra fazer em casa, na ordem certa pra reconstruir sem forçar a barriga.</p>
+      <ul class="feats">
+        <li>Treino de 30 min pensado pro pós-parto</li>
+        <li>Progressão segura, do centro pro corpo todo</li>
+        <li>O que fazer e o que ainda evitar</li>
+        <li>Acesso pra sempre, no teu tempo</li>
+      </ul>
+      <div class="price">€7 <small>uma vez só</small></div>
+      <a class="cta" id="ctaStripe" href="https://buy.stripe.com/9B67sN9W5ceNaW4aNw08g00?ref=protocolo-do-centro" target="_blank" rel="noopener">Quero o meu Treino Express</a>
+      <p class="sub">Pagamento seguro. Acesso na hora.</p>
+    </div>
+    <div class="ps">
+      <b>P.S.</b> Se você quer um acompanhamento de perto pra voltar a treinar com segurança depois do parto, eu atendo por consultoria mensal. <a href="https://ptlucaslima.pt/#consultoria" target="_blank" rel="noopener">Vê como funciona aqui.</a>
+    </div>
+  </div>
+</section>
+
+<footer>© Lucas Lima · ptlucaslima.pt · @personaltrainerlucaslima</footer>
+
+<script>
+(function(){
+  /* self test */
+  document.querySelectorAll('.stbtn').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.getElementById('stYes').classList.remove('on');
+      document.getElementById('stNo').classList.remove('on');
+      document.getElementById(b.dataset.r==='yes'?'stYes':'stNo').classList.add('on');
+      if(window.fbq){fbq('trackCustom','AutoTesteDiastase',{resultado:b.dataset.r});}
+    });
+  });
+
+  /* guided player */
+  var steps=[
+    {name:'Etapa 1 · 2 min',title:'Respiração diafragmática',desc:'Inspira pelo nariz enchendo a barriga. Expira soltando devagar pela boca. Só respira e relaxa.',secs:120,breath:true},
+    {name:'Etapa 2 · 3 min',title:'Conexão com o assoalho pélvico',desc:'Ao expirar, imagina segurar um xixi e fechar de baixo pra cima, suave. Solta ao inspirar.',secs:180,breath:true},
+    {name:'Etapa 3 · 3 min',title:'Ativação do transverso',desc:'Expira e puxa a barriga pra dentro de baixo pra cima, como fechar um cinto por dentro. Sem prender o ar.',secs:180,breath:true},
+    {name:'Etapa 4 · 4 min',title:'Marcha leve deitada',desc:'Mantendo a barriga firme, desce um pé de cada vez tocando o chão devagar. Costas coladas no chão.',secs:240,breath:false},
+    {name:'Etapa 5 · 3 min',title:'Respiração de fechamento',desc:'Volta a respirar fundo e lento, sentindo o centro mais conectado. Bom trabalho.',secs:180,breath:true}
+  ];
+  var i=0,left=steps[0].secs,timer=null,playing=false,breathT=null,phaseIn=true;
+  var pace=document.getElementById('pace'),paceWord=document.getElementById('paceWord');
+  var clock=document.getElementById('clock'),pbar=document.getElementById('pbar');
+  var dots=document.getElementById('dots');
+  steps.forEach(function(s,idx){var d=document.createElement('span');d.className='sdot';d.textContent=idx+1;dots.appendChild(d);});
+  function fmt(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);}
+  function paint(){
+    document.getElementById('stepName').textContent=steps[i].name;
+    document.getElementById('stepTitle').textContent=steps[i].title;
+    document.getElementById('stepDesc').textContent=steps[i].desc;
+    clock.textContent=fmt(left);
+    pbar.style.width=(100*(steps[i].secs-left)/steps[i].secs)+'%';
+    dots.querySelectorAll('.sdot').forEach(function(d,idx){d.className='sdot'+(idx<i?' done':idx===i?' on':'');});
+  }
+  function breathe(){
+    clearTimeout(breathT);
+    if(!steps[i].breath){pace.className='pace out';pace.style.transitionDuration='2s';paceWord.textContent='Mantém firme';return;}
+    phaseIn=true;
+    function tick(){
+      if(phaseIn){pace.className='pace in';paceWord.textContent='Inspira';pace.style.transitionDuration='4s';}
+      else{pace.className='pace out';paceWord.textContent='Expira';pace.style.transitionDuration='6s';}
+      var dur=phaseIn?4000:6000;
+      phaseIn=!phaseIn;
+      breathT=setTimeout(tick,dur);
+    }
+    tick();
+  }
+  function startStep(){
+    left=steps[i].secs;paint();breathe();
+    clearInterval(timer);
+    timer=setInterval(function(){
+      left--;paint();
+      if(left<=0){clearInterval(timer);
+        try{navigator.vibrate&&navigator.vibrate(200);}catch(e){}
+        if(i<steps.length-1){i++;startStep();}
+        else{finish();}
+      }
+    },1000);
+  }
+  function finish(){
+    playing=false;clearTimeout(breathT);pace.className='pace out';
+    paceWord.textContent='Pronto 💜';document.getElementById('play').textContent='Refazer';
+    document.getElementById('stepTitle').textContent='Sequência completa';
+    document.getElementById('stepDesc').textContent='15 minutos feitos. Faz isso todo dia e o centro vai reconectando. A barriga fecha de dentro pra fora.';
+    dots.querySelectorAll('.sdot').forEach(function(d){d.className='sdot done';});
+    if(window.fbq){fbq('trackCustom','CentroConcluido');}
+  }
+  document.getElementById('play').addEventListener('click',function(){
+    if(playing){playing=false;clearInterval(timer);clearTimeout(breathT);this.textContent='Continuar';pace.className='pace out';paceWord.textContent='Pausado';}
+    else{
+      if(document.getElementById('play').textContent==='Refazer'){i=0;}
+      playing=true;this.textContent='Pausar';startStep();
+      if(window.fbq){fbq('trackCustom','CentroIniciado');}
+    }
+  });
+  document.getElementById('next').addEventListener('click',function(){clearInterval(timer);clearTimeout(breathT);if(i<steps.length-1){i++;if(playing){startStep();}else{left=steps[i].secs;paint();}}});
+  document.getElementById('prev').addEventListener('click',function(){clearInterval(timer);clearTimeout(breathT);if(i>0){i--;}left=steps[i].secs;if(playing){startStep();}else{paint();}});
+  paint();
+  var cta=document.getElementById('ctaStripe');
+  if(cta){cta.addEventListener('click',function(){if(window.fbq){fbq('track','InitiateCheckout',{value:7,currency:'EUR'});}});}
+})();
+</script>
+</body>
+</html>
